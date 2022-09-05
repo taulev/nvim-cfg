@@ -13,7 +13,7 @@ vim.cmd([[
 local map = require("keymap/keymap").keymap
 map('n', '<Space>', '<Nop>')
 let.mapleader = ' ' -- Change <Leader> to <Space>
-map('n', '<Leader>e', ':Lexplore<CR>', { silent = true })
+map('n', '<Leader>e', ':NvimTreeToggle<CR>', { silent = true })
 map('n', '<Leader>gd', ':GoDoc<CR>', { silent = true })
 map('n', '<Leader>fst', ':GoFillStruct<CR>', { silent = true })
 map('n', '<Leader>aty', ':GoAddTags yaml<CR>', { silent = true })
@@ -94,6 +94,7 @@ require('nvim-treesitter.configs').setup {
   }
 }
 require('hlargs').setup()
+require('nvim-tree').setup()
 
 -- Golang import/format on save
 api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').gofmt() ]], false)
@@ -125,6 +126,8 @@ return require('packer').startup(function()
   use 'simrat39/rust-tools.nvim'
   use 'weilbith/nvim-code-action-menu'
   use 'williamboman/nvim-lsp-installer'
+  use 'kyazdani42/nvim-web-devicons'
+  use 'kyazdani42/nvim-tree.lua'
 
 end)
 
