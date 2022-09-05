@@ -25,6 +25,7 @@ map('n', '<Leader>=', ':res +1<CR>', { silent = true })
 map('n', '<Leader>,', ':vert res -1<CR>', { silent = true })
 map('n', '<Leader>.', ':vert res +1<CR>', { silent = true })
 map('n', '<Leader>sh', ':terminal<CR>', { silent = true })
+map('n', '<Leader>cf', ':CtrlSFToggle<CR>', { silent = true })
 
 -- Set various vim options
 set.number = true
@@ -128,6 +129,7 @@ return require('packer').startup(function()
   use 'williamboman/nvim-lsp-installer'
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
+  use 'dyng/ctrlsf.vim'
 
 end)
 
