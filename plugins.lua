@@ -24,6 +24,7 @@ map('n', '<Leader>-', ':res -1<CR>', { silent = true })
 map('n', '<Leader>=', ':res +1<CR>', { silent = true })
 map('n', '<Leader>,', ':vert res -1<CR>', { silent = true })
 map('n', '<Leader>.', ':vert res +1<CR>', { silent = true })
+map('n', '<Leader>sh', ':terminal<CR>', { silent = true })
 
 -- Set various vim options
 set.number = true
