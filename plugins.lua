@@ -13,18 +13,24 @@ vim.cmd([[
 local map = require("keymap/keymap").keymap
 map('n', '<Space>', '<Nop>')
 let.mapleader = ' ' -- Change <Leader> to <Space>
-map('n', '<Leader>e', ':Explore<CR>', { silent = true })
+map('n', '<Leader>e', ':Lexplore<CR>', { silent = true })
 map('n', '<Leader>gd', ':GoDoc<CR>', { silent = true })
 map('n', '<Leader>fst', ':GoFillStruct<CR>', { silent = true })
 map('n', '<Leader>aty', ':GoAddTags yaml<CR>', { silent = true })
 map('n', '<Leader>atj', ':GoAddTags json<CR>', { silent = true })
 map('n', '<Leader>rt', ':GoRemoveTags<CR>', { silent = true })
 map('n', '<Leader>ac', ':GoCmt<CR>', { silent = true })
+map('n', '<Leader>-', ':res -1<CR>', { silent = true })
+map('n', '<Leader>=', ':res +1<CR>', { silent = true })
+map('n', '<Leader>,', ':vert res -1<CR>', { silent = true })
+map('n', '<Leader>.', ':vert res +1<CR>', { silent = true })
 
 -- Set various vim options
 set.number = true
 set.relativenumber = true
 set.ruler = true
+set.splitright = true
+set.splitbelow = true
 
 -- Golang LSP
 require('lspconfig').gopls.setup{
