@@ -25,8 +25,8 @@ map('n', '<Leader>=', ':res +1<CR>', { silent = true })
 map('n', '<Leader>,', ':vert res -1<CR>', { silent = true })
 map('n', '<Leader>.', ':vert res +1<CR>', { silent = true })
 map('n', '<Leader>sh', ':terminal<CR>', { silent = true })
-map('n', '<Leader>cf', ':CtrlSFToggle<CR>', { silent = true })
-map('n', '<Leader>cs', ':CtrlSF<CR>', { silent = true })
+map('n', '<Leader>ct', ':CtrlSFToggle<CR>', { silent = true })
+map('n', '<Leader>cs', ':CtrlSF<CR> :CtrlSFFocus<CR>', { silent = true })
 
 
 -- Set various vim options
