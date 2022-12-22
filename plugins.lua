@@ -56,6 +56,13 @@ require('lspconfig').gopls.setup{
 	on_attach = on_attach,
 }
 
+
+-- Needs npm
+-- curl -sL install-node.vercel.app/lts | bash
+-- npm install -g intelephense
+-- PHP LSP
+require('lspconfig').intelephense.setup{}
+
 -- nvim-cmp reccomended config
 local cmp = require('cmp')
 cmp.setup({
@@ -99,6 +106,17 @@ require('nvim-treesitter.configs').setup {
 require('hlargs').setup()
 require('nvim-tree').setup()
 
+
+-- null-ls config
+local null_ls = require('null-ls')
+null_ls.setup({
+   sources = {
+	null_ls.builtins.formatting.phpcsfixer,
+	null_ls.builtins.diagnostics.php,
+	null_ls.builtins.diagnostics.phpstan,
+   },
+})
+
 -- Golang import/format on save
 api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').gofmt() ]], false)
 api.nvim_exec([[ autocmd BufWritePre *.go :silent! GoImports ]], false)
@@ -132,6 +150,14 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
   use 'dyng/ctrlsf.vim'
+  use { 'neoclide/coc.nvim', branch = 'release' }
+
+  use({
+	  'jose-elias-alvarez/null-ls.nvim',
+	  config = function()
+		  require('null-ls').setup()
+	  end,
+	  requires = { 'nvim-lua/plenary.nvim' }
+  })
 
 end)
-
