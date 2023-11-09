@@ -37,89 +37,89 @@ set.splitright = true
 set.splitbelow = true
 
 -- Golang LSP
-require('lspconfig').gopls.setup{
-	cmd = {'gopls'},
-  settings = {
-    gopls = {
-      analyses = {
-        nilness = true,
-        unusedparams = true,
-        unusedwrite = true,
-        useany = true,
-      },
-      experimentalPostfixCompletions = true,
-      gofumpt = true,
-      staticcheck = true,
-      usePlaceholders = true,
-    },
-  },
-	on_attach = on_attach,
-}
+--require('lspconfig').gopls.setup{
+--	cmd = {'gopls'},
+--  settings = {
+--    gopls = {
+--      analyses = {
+--        nilness = true,
+--        unusedparams = true,
+--        unusedwrite = true,
+--        useany = true,
+--      },
+--      experimentalPostfixCompletions = true,
+--      gofumpt = true,
+--      staticcheck = true,
+--      usePlaceholders = true,
+--    },
+--  },
+--	on_attach = on_attach,
+--}
 
 
 -- Needs npm
 -- curl -sL install-node.vercel.app/lts | bash
 -- npm install -g intelephense
 -- PHP LSP
-require('lspconfig').intelephense.setup{}
+--require('lspconfig').intelephense.setup{}
 
 -- nvim-cmp reccomended config
-local cmp = require('cmp')
-cmp.setup({
-  snippet = {
-    expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
-  mapping = {
-    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-    ['<Tab>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    })
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-    { name = 'path' },
-    { name = 'buffer' },
-    { name = 'nvim_lsp_signature_help' },
-  },
-})
-
--- Treesitter stuff
-require('nvim-treesitter.configs').setup {
-  ensure_installed = { "bash", "c", "cmake", "css", "dockerfile", "go", "gomod", "gowork", "hcl", "help", "html", "http", "javascript", "json", "lua", "make", "markdown", "python", "regex", "ruby", "rust", "toml", "vim", "yaml", "zig" },
-  highlight = {
-    enable = true,
-  },
-  rainbow = {
-    enable = true,
-    extended_mode = true,
-    max_file_lines = nil,
-  }
-}
-require('hlargs').setup()
-require('nvim-tree').setup()
-
-
--- null-ls config
-local null_ls = require('null-ls')
-null_ls.setup({
-   sources = {
-	null_ls.builtins.formatting.phpcsfixer,
-	null_ls.builtins.diagnostics.php,
-	null_ls.builtins.diagnostics.phpstan,
-   },
-})
-
--- Golang import/format on save
-api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').gofmt() ]], false)
-api.nvim_exec([[ autocmd BufWritePre *.go :silent! GoImports ]], false)
+--local cmp = require('cmp')
+--cmp.setup({
+--  snippet = {
+--    expand = function(args)
+--        vim.fn["vsnip#anonymous"](args.body)
+--    end,
+--  },
+--  mapping = {
+--    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+--    ['<Tab>'] = cmp.mapping.select_next_item(),
+--    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+--    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+--    ['<C-e>'] = cmp.mapping.close(),
+--    ['<CR>'] = cmp.mapping.confirm({
+--      behavior = cmp.ConfirmBehavior.Insert,
+--      select = true,
+--    })
+--  },
+--  sources = {
+--    { name = 'nvim_lsp' },
+--    { name = 'vsnip' },
+--    { name = 'path' },
+--    { name = 'buffer' },
+--    { name = 'nvim_lsp_signature_help' },
+--  },
+--})
+--
+---- Treesitter stuff
+--require('nvim-treesitter.configs').setup {
+--  ensure_installed = { "bash", "c", "cmake", "css", "dockerfile", "go", "gomod", "gowork", "hcl", "help", "html", "http", "javascript", "json", "lua", "make", "markdown", "python", "regex", "ruby", "rust", "toml", "vim", "yaml", "zig" },
+--  highlight = {
+--    enable = true,
+--  },
+--  rainbow = {
+--    enable = true,
+--    extended_mode = true,
+--    max_file_lines = nil,
+--  }
+--}
+--require('hlargs').setup()
+--require('nvim-tree').setup()
+--
+--
+---- null-ls config
+--local null_ls = require('null-ls')
+--null_ls.setup({
+--   sources = {
+--	null_ls.builtins.formatting.phpcsfixer,
+--	null_ls.builtins.diagnostics.php,
+--	null_ls.builtins.diagnostics.phpstan,
+--   },
+--})
+--
+---- Golang import/format on save
+--api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').gofmt() ]], false)
+--api.nvim_exec([[ autocmd BufWritePre *.go :silent! GoImports ]], false)
 
 
 -- Packer something I dont understand
